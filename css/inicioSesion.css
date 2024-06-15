@@ -1,0 +1,77 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Estilos del formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-form img {
+  width: 120px;
+}
+
+.login-form h1 {
+  color: #204d74;
+  margin: 0;
+}
+
+/* Estilos de los inputs */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 2px solid #a3c2fa;
+  border-radius: 4px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+/* Estilos del botón */
+button {
+  background-color: #207abd;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #185a89;
+}
+
+/* Estilos del mensaje y enlaces */
+p.message {
+  font-size: 0.9em;
+}
+
+p.message a {
+  color: #207abd;
+  text-decoration: none;
+}
+
+p.message a:hover {
+  text-decoration: underline;
+}

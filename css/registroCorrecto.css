@@ -1,0 +1,36 @@
+/* Estilos para la página de registro exitoso */
+.success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .success-message img {
+    width: 100px; /* Ajusta esto según el tamaño deseado */
+  }
+  
+  .success-message h1 {
+    color: #204d74;
+  }
+  
+  .success-message p {
+    font-size: 1em;
+    text-align: center;
+  }
+  
+  .btn {
+    background-color: #207abd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .btn:hover {
+    background-color: #185a89;
+  }
+  

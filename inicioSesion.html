@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/inicioSesion.css">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <title>Iniciar sesión en Spotify</title>
+</head>
+<body>
+  <div class="container">
+    <div class="login-form">
+      <img src="assets/img/logo.png" alt="Logo de Spotify">
+      <h1>Bienvenido de nuevo</h1>
+      <form action="php/login.php" method="post">
+        <input type="text" name="username" placeholder="Nombre de usuario o email" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
+      </form>
+      <p class="message">¿No tienes cuenta? <a href="registrar.html">Regístrate gratis</a></p>
+    </div>
+  </div>
+</body>
+</html>

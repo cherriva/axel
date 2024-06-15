@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/registro.css">
+  <title>Regístrate gratis en WikiRicky</title>
+</head>
+<body>
+  <div class="container">
+    <div class="registro-form">
+      <img src="assets/img/logo.png" alt="Logo de WikiRicky">
+      <h1>Regístrate gratis</h1>
+      <form action="php/registro.php" method="post">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <input type="password" name="password2" placeholder="Confirmar contraseña" required>
+        <button type="submit">Registrarme</button>
+      </form>
+      <p class="message">¿Ya tienes cuenta? <a href="inicioSesion.html">Inicia sesión</a></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error en el Registro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container layout_padding">
+        <div class="custom_heading">
+            <h1>Error en el Registro</h1>
+        </div>
+        <p class="custom_heading-text">
+            <?php echo htmlspecialchars($_GET['mensaje']); ?>
+        </p>
+        <div class="d-flex justify-content-center">
+            <a href="registrar.html" class="custom_dark-btn">
+                Volver al registro
+            </a>
+        </div>
+    </div>
+</body>
+</html>

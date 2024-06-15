@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localizaciones filtradas por Tipo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Filtrar Localizaciones por Tipo</h2>
+    <label for="tipoSelect">Selecciona un Tipo de Ubicación:</label>
+    <select id="tipoSelect">
+        <!-- Options se llenarán con JavaScript -->
+    </select>
+
+    <button onclick="filtrarLocalizaciones()">Filtrar</button>
+
+    <div id="localizacionesContainer">
+        <!-- Aquí se mostrarán las tarjetas de localizaciones -->
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Llenar el select con los tipos de ubicación disponibles al cargar la página
+            $.ajax({
+                url: 'get_tipos.php', // Ruta a ajustar según tu estructura
+                type: 'GET',
+                success: function(response) {
+                    $('#tipoSelect').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener los tipos de ubicación:', error);
+                }
+            });
+        });
+
+        function filtrarLocalizaciones() {
+            var selectedTipo = $('#tipoSelect').val();
+
+            // Hacer la petición AJAX para obtener las localizaciones filtradas
+            $.ajax({
+                url: 'get_localizaciones.php', // Nombre del archivo PHP a crear
+                type: 'GET',
+                data: {
+                    tipo: selectedTipo
+                },
+                success: function(response) {
+                    $('#localizacionesContainer').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener las localizaciones:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

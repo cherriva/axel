@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episodios filtrados por Temporada</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Filtrar Episodios por Temporada</h2>
+    <label for="temporadaSelect">Selecciona una Temporada:</label>
+    <select id="temporadaSelect">
+        <option value="S01">Temporada 1</option>
+        <option value="S02">Temporada 2</option>
+        <option value="S03">Temporada 3</option>
+        <option value="S04">Temporada 4</option>
+        <option value="S05">Temporada 5</option>
+    </select>
+
+    <button onclick="filtrarEpisodios()">Filtrar</button>
+
+    <div id="episodiosContainer">
+        <!-- Aquí se mostrarán las tarjetas de episodios -->
+    </div>
+
+    <script>
+        function filtrarEpisodios() {
+            var selectedTemporada = $('#temporadaSelect').val();
+
+            // Hacer la petición AJAX para obtener los episodios filtrados
+            $.ajax({
+                url: 'get_episodios_por_temporada.php', // Nombre del archivo PHP a crear
+                type: 'GET',
+                data: {
+                    temporada: selectedTemporada
+                },
+                success: function(response) {
+                    $('#episodiosContainer').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener los episodios:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

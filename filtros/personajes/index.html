@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes filtrados por Status</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Filtrar personajes por Status</h2>
+    <label for="statusSelect">Selecciona un Status:</label>
+    <select id="statusSelect">
+        <!-- Options will be populated by JavaScript -->
+    </select>
+    <button onclick="filtrarPersonajes()">Filtrar</button>
+
+    <div id="personajesContainer">
+        <!-- Aquí se mostrarán las tarjetas de personajes -->
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Llenar el select con los statuses disponibles al cargar la página
+            $.ajax({
+                url: 'get_statuses.php', // Cambiar la ruta según tu estructura
+                type: 'GET',
+                success: function(response) {
+                    $('#statusSelect').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener los statuses:', error);
+                }
+            });
+        });
+
+        function filtrarPersonajes() {
+            var selectedStatus = $('#statusSelect').val();
+
+            // Hacer la petición AJAX para obtener los personajes filtrados
+            $.ajax({
+                url: 'get_personajes.php', // Cambiar la ruta según tu estructura
+                type: 'GET',
+                data: {
+                    status: selectedStatus
+                },
+                success: function(response) {
+                    $('#personajesContainer').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener los personajes:', error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -47,6 +47,7 @@ if (isset($_GET['temporada']) && !empty($_GET['temporada'])) {
     } else {
         echo '<p>No se encontraron episodios para esta temporada.</p>';
     }
+    
 
     $stmt->close();
 } else {

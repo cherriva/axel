@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Episodios filtrados por Temporada</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+
+
     <style>
         .card {
             border: 1px solid #ccc;
@@ -15,6 +19,7 @@
             display: inline-block;
         }
     </style>
+
 </head>
 <body>
     <h2>Filtrar Episodios por Temporada</h2>
@@ -28,30 +33,67 @@
     </select>
 
     <button onclick="filtrarEpisodios()">Filtrar</button>
+    <button id="btnGenerarPDF" style="display: none;" onclick="generarPDF()">Generar PDF</button>
 
-    <div id="episodiosContainer">
-        <!-- Aquí se mostrarán las tarjetas de episodios -->
+
+    <div id="pdfContainer">
+        <div id="episodiosContainer">
+            <!-- Aquí se mostrarán las tarjetas de episodios -->
+        </div>
+        <div id="logoContainer">
+            <img src="logo.p" style="width: 100px; position: absolute; top: 10px; right: 10px;">
+        </div>
     </div>
-
     <script>
         function filtrarEpisodios() {
-            var selectedTemporada = $('#temporadaSelect').val();
+    var selectedTemporada = $('#temporadaSelect').val();
 
-            // Hacer la petición AJAX para obtener los episodios filtrados
-            $.ajax({
-                url: 'get_episodios_por_temporada.php', // Nombre del archivo PHP a crear
-                type: 'GET',
-                data: {
-                    temporada: selectedTemporada
-                },
-                success: function(response) {
-                    $('#episodiosContainer').html(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error al obtener los episodios:', error);
-                }
-            });
+    // Hacer la petición AJAX para obtener los episodios filtrados
+    $.ajax({
+        url: 'get_episodios_por_temporada.php',
+        type: 'GET',
+        data: {
+            temporada: selectedTemporada
+        },
+        success: function(response) {
+            $('#episodiosContainer').html(response);
+            // Mostrar el botón de generar PDF si hay episodios
+            if (response.trim() !== '<p>No se encontraron episodios para esta temporada.</p>') {
+                $('#btnGenerarPDF').show();
+            } else {
+                $('#btnGenerarPDF').hide();
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al obtener los episodios:', error);
         }
+    });
+}
+
+function generarPDF() {
+    // Lógica para generar el PDF con los episodios filtrados
+    pdfEpisodio();
+}
+function pdfEpisodio() {
+    // Opciones de configuración para html2pdf
+    var options = {
+        filename: 'episodios.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Elemento HTML que queremos convertir a PDF (en este caso, el contenedor con episodios y logo)
+    var element = document.getElementById('pdfContainer');
+
+    // Llamar a html2pdf
+    html2pdf()
+        .set(options)
+        .from(element)
+        .save();
+}
+
+
     </script>
 </body>
 </html>

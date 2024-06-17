@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos con Chart.js</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 400px; /* Ajusta el ancho según sea necesario */
+            height: 300px; /* Ajusta la altura según sea necesario */
+            margin: 20px auto; /* Centrar y dar margen vertical de 20px */
+        }
+        .chart-container + .chart-container {
+            margin-top: 200px; /* Espacio de 100px entre gráficos */
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gráficos de la Base de Datos</h1>
+
+    <div class="chart-container">
+        <h2>Gráfico de Tarta - Estado de Personajes</h2>
+        <canvas id="statusChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Gráfico de Barras - Género de Personajes</h2>
+        <canvas id="genderChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Gráfico de Línea - Número de Episodios por Temporada</h2>
+        <canvas id="episodesChart"></canvas>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'get_data.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // Gráfico de Tarta - Estado de Personajes
+                    const statusLabels = data.status.map(item => item.status);
+                    const statusCounts = data.status.map(item => item.count);
+
+                    const statusCtx = document.getElementById('statusChart').getContext('2d');
+                    new Chart(statusCtx, {
+                        type: 'pie',
+                        data: {
+                            labels: statusLabels,
+                            datasets: [{
+                                data: statusCounts,
+                                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40', '#4BC0C0']
+                            }]
+                        }
+                    });
+
+                    // Gráfico de Barras - Género de Personajes
+                    const genderLabels = data.gender.map(item => item.genero);
+                    const genderCounts = data.gender.map(item => item.count);
+
+                    const genderCtx = document.getElementById('genderChart').getContext('2d');
+                    new Chart(genderCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: genderLabels,
+                            datasets: [{
+                                label: 'Número de Personajes',
+                                data: genderCounts,
+                                backgroundColor: ['#FF6384', '#36A2EB']
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Número de Personajes'
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Género'
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // Gráfico de Línea - Número de Episodios por Temporada
+                    const seasonLabels = data.episodesBySeason.map(item => item.season);
+                    const seasonCounts = data.episodesBySeason.map(item => item.count);
+
+                    const episodesCtx = document.getElementById('episodesChart').getContext('2d');
+                    new Chart(episodesCtx, {
+                        type: 'line',
+                        data: {
+                            labels: seasonLabels,
+                            datasets: [{
+                                label: 'Número de Episodios',
+                                data: seasonCounts,
+                                borderColor: '#36A2EB',
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Temporada'
+                                    }
+                                },
+                                y: {
+                                    
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Número de Episodios'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

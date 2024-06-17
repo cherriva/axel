@@ -1,14 +1,13 @@
-/* styles.css */
-
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #e4f9f5; /* Light greenish-blue background */
 }
 
 nav {
-    background-color: #333;
+    background-color: #024959; /* Dark blue */
     color: #fff;
     padding: 10px;
 }
@@ -30,7 +29,7 @@ nav ul li a {
 }
 
 footer {
-    background-color: #333;
+    background-color: #024959; /* Dark blue */
     color: #fff;
     padding: 10px;
     position: fixed;
@@ -50,7 +49,8 @@ footer {
 }
 
 .login-container form {
-    border: 1px solid #ccc;
+    background-color: #ccf2f4; /* Light blue */
+    border: 1px solid #a2d9ce; /* Soft green */
     border-radius: 5px;
     padding: 20px;
 }
@@ -63,7 +63,7 @@ footer {
 }
 
 .login-container form button {
-    background-color: #333;
+    background-color: #027373; /* Deep green */
     border: none;
     color: #fff;
     cursor: pointer;
@@ -72,7 +72,7 @@ footer {
 }
 
 .login-container form button:hover {
-    background-color: #555;
+    background-color: #0392cf; /* Bright blue */
 }
 
 /* Dashboard Page Styles */
@@ -97,7 +97,8 @@ footer {
 }
 
 .change-password-container form {
-    border: 1px solid #ccc;
+    background-color: #ccf2f4; /* Light blue */
+    border: 1px solid #a2d9ce; /* Soft green */
     border-radius: 5px;
     padding: 20px;
 }
@@ -109,7 +110,7 @@ footer {
 }
 
 .change-password-container form button {
-    background-color: #333;
+    background-color: #027373; /* Deep green */
     border: none;
     color: #fff;
     cursor: pointer;
@@ -118,7 +119,7 @@ footer {
 }
 
 .change-password-container form button:hover {
-    background-color: #555;
+    background-color: #0392cf; /* Bright blue */
 }
 
 /* Users Page Styles */
@@ -168,7 +169,7 @@ footer {
 }
 
 .api-summary-container th {
-    background-color: #333;
+    background-color: #027373; /* Deep green */
     color: #fff;
 }
 
@@ -179,6 +180,7 @@ footer {
 .api-summary-container tr:hover {
     background-color: #ddd;
 }
+
 /* Modify User Page Styles */
 .modify-user-container {
     margin: 50px auto;
@@ -186,7 +188,7 @@ footer {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #ccf2f4; /* Light blue */
 }
 
 .modify-user-container h2 {
@@ -223,7 +225,7 @@ footer {
     font-size: 16px;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #333;
+    background-color: #027373; /* Deep green */
     color: #fff;
     cursor: pointer;
 }

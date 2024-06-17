@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
             exit;
         } else {
             // Redireccionar al usuario a la página de inicio
-            header("Location: ../index.html");
+            header("Location: ../indexRegistado.html");
             exit;
         }
     } else {

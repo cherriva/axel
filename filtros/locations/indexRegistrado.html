@@ -88,6 +88,13 @@
                 },
                 success: function(response) {
                     $('#localizacionesContainer').html(response);
+
+                    // Mostrar el botón de generar PDF si hay localizaciones
+                    if (response.trim() !== '<p>No se encontraron localizaciones para este tipo.</p>') {
+                        $('#btnGenerarPDF').show();
+                    } else {
+                        $('#btnGenerarPDF').hide();
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error('Error al obtener las localizaciones:', error);
@@ -95,6 +102,29 @@
             });
         }
 
+        function generarPDF() {
+            // Lógica para generar el PDF con las localizaciones filtradas
+            pdfLocalizaciones();
+        }
+
+        function pdfLocalizaciones() {
+            // Opciones de configuración para html2pdf
+            var options = {
+                filename: 'localizaciones.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Elemento HTML que queremos convertir a PDF (en este caso, el contenedor con localizaciones y logo)
+            var element = document.getElementById('pdfContainer');
+
+            // Llamar a html2pdf
+            html2pdf()
+                .set(options)
+                .from(element)
+                .save();
+        }
     </script>
 </body>
 </html>

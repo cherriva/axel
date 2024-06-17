@@ -61,12 +61,41 @@
         success: function(response) {
             $('#episodiosContainer').html(response);
             // Mostrar el botón de generar PDF si hay episodios
+            if (response.trim() !== '<p>No se encontraron episodios para esta temporada.</p>') {
+                $('#btnGenerarPDF').show();
+            } else {
+                $('#btnGenerarPDF').hide();
+            }
         },
         error: function(xhr, status, error) {
             console.error('Error al obtener los episodios:', error);
         }
     });
 }
+
+function generarPDF() {
+    // Lógica para generar el PDF con los episodios filtrados
+    pdfEpisodio();
+}
+function pdfEpisodio() {
+    // Opciones de configuración para html2pdf
+    var options = {
+        filename: 'episodios.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Elemento HTML que queremos convertir a PDF (en este caso, el contenedor con episodios y logo)
+    var element = document.getElementById('pdfContainer');
+
+    // Llamar a html2pdf
+    html2pdf()
+        .set(options)
+        .from(element)
+        .save();
+}
+
 
     </script>
 </body>

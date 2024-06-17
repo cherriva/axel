@@ -1,13 +1,14 @@
+/* styles.css */
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f6f8; /* Light grayish-blue background for a lighter look */
 }
 
 nav {
-    background-color: #007BFF; /* Bright blue */
+    background-color: #333;
     color: #fff;
     padding: 10px;
 }
@@ -29,7 +30,7 @@ nav ul li a {
 }
 
 footer {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #333;
     color: #fff;
     padding: 10px;
     position: fixed;
@@ -49,10 +50,9 @@ footer {
 }
 
 .login-container form {
-    border: 1px solid #007BFF;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
-    background-color: #e7f0fa; /* Light blue background for form */
 }
 
 .login-container form input[type="email"],
@@ -63,7 +63,7 @@ footer {
 }
 
 .login-container form button {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #333;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -72,7 +72,7 @@ footer {
 }
 
 .login-container form button:hover {
-    background-color: #003d82; /* Even darker blue */
+    background-color: #555;
 }
 
 /* Dashboard Page Styles */
@@ -97,10 +97,9 @@ footer {
 }
 
 .change-password-container form {
-    border: 1px solid #007BFF;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
-    background-color: #e7f0fa; /* Light blue background for form */
 }
 
 .change-password-container form input[type="password"] {
@@ -110,7 +109,7 @@ footer {
 }
 
 .change-password-container form button {
-    background-color: #0056b3;
+    background-color: #333;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -119,7 +118,7 @@ footer {
 }
 
 .change-password-container form button:hover {
-    background-color: #003d82;
+    background-color: #555;
 }
 
 /* Users Page Styles */
@@ -169,7 +168,7 @@ footer {
 }
 
 .api-summary-container th {
-    background-color: #007BFF;
+    background-color: #333;
     color: #fff;
 }
 
@@ -180,15 +179,14 @@ footer {
 .api-summary-container tr:hover {
     background-color: #ddd;
 }
-
 /* Modify User Page Styles */
 .modify-user-container {
     margin: 50px auto;
     width: 400px;
     padding: 20px;
-    border: 1px solid #007BFF;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #e7f0fa;
+    background-color: #f9f9f9;
 }
 
 .modify-user-container h2 {
@@ -225,7 +223,7 @@ footer {
     font-size: 16px;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #0056b3;
+    background-color: #333;
     color: #fff;
     cursor: pointer;
 }

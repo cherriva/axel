@@ -1,6 +1,5 @@
 <?php
-session_start(); // Iniciar la sesión
-
+session_start(); 
 require 'db.php';
 
 $message = '';

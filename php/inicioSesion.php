@@ -8,12 +8,12 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/inicioSesion.css">
-  <title>Iniciar sesión en Spotify</title>
+  <title>Iniciar sesión en RickyWiki</title>
 </head>
 <body>
   <div class="container">
     <div class="login-form">
-      <img src="../images/logo.png" alt="Logo de Spotify">
+      <img src="../assets/img/logo.png" alt="Logo de WikiRicky">
       <h1>Bienvenido de nuevo</h1>
       <?php
       if (isset($_SESSION['error'])) {
@@ -22,7 +22,7 @@ session_start();
         } elseif ($_SESSION['error'] == 'user_not_found') {
           echo '<p style="color:red;">Usuario no encontrado. Por favor, regístrate primero.</p>';
         }
-        unset($_SESSION['error']); // Clear error after displaying
+        unset($_SESSION['error']); 
       }
       ?>
       <form action="login.php" method="post">

@@ -67,41 +67,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Selecciona la Playlist a Actualizar</h1>
-        <form action="update_playlists.php" method="GET">
-            <label for="playlist_id">Playlist:</label>
-            <select name="playlist_id" id="playlist_id">
-                <?php
-                $dbHost     = 'dbserver';
-                $dbUsername = 'grupo37';
-                $dbPassword = "ieK3air8Ho"; 
-                $dbName     = "db_grupo37";
-
-                $mysqli = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-                if ($mysqli->connect_error) {
-                    die("Conexión fallida: " . $mysqli->connect_error);
-                }
-
-                $result = $mysqli->query("SELECT PlaylistID, PlaylistName FROM Playlists");
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<option value='{$row['PlaylistID']}'>{$row['PlaylistName']}</option>";
-                    }
-                } else {
-                    echo "<option value=''>No hay playlists disponibles</option>";
-                }
-                $mysqli->close();
-                ?>
-            </select>
-            <br><br>
-            <input type="submit" value="Actualizar Playlist">
+        <h1>Borrar Datos API</h1>
+        <form action="../php/poblarBBDD/reiniciarTablas.php" method="GET">
+            <input type="submit" value="Borrar las tablas">
         </form>
-        <?php
-        if ($result->num_rows === 0) {
-            echo "<p class='empty-message'>No hay playlists disponibles. Por favor, asegúrate de agregar playlists antes de intentar actualizar.</p>";
-        }
-        ?>
+        <h1>Cargar datos de API</h1>
+        <form action="../php/poblarBBDD/poblarBBDD.php" method="GET">
+            <input type="submit" value="Cargar datos en las tablas">
+        </form>
     </div>
 </body>
 <?php include 'footer.php'; ?>

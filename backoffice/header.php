@@ -9,8 +9,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="usersSearch.php">Usuarios</a></li>
-            <li><a href="select_playlists.php">Actualizar Datos API</a></li>
+            <li><a href="search.php">Usuarios</a></li>
+            <li><a href="actualizar_database.php">Actualizar Datos</a></li>
             <li><a href="apiSummary.php">Resumen API</a></li>
             <li><a href="change_password.php">Cambiar contraseña</a></li>
             <li><a href="../index.html">Cerrar sesion</a></li>
